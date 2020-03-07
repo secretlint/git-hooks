@@ -2,10 +2,11 @@
 
 Integrate secretlint with global git hooks.
 
+Prevent credentials on any Git project by [secretlint](https://github.com/secretlint/secretlint).
+
 ## Features
 
-- Global Git Hooks collection
-    - Using [`core.hooksPath`](https://git-scm.com/docs/githooks) on Git 2.9+
+- Global Git Hooks using [`core.hooksPath`](https://git-scm.com/docs/githooks) on Git 2.9+
 - If project has setup local git hook, call local hooks too
     - Order: local hooks -> global hooks 
 - Define ignoring project paths by `IGNORE_GLOBAL_HOOKS` file
