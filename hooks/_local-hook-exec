@@ -7,7 +7,6 @@ declare IGNORE_GLOBAL_HOOKS="$(dirname "${scriptDir}")/IGNORE_GLOBAL_HOOKS"
 # Prefer project's hook than global hooks
 if [ -e $LOCAL_HOOK ]; then
     $LOCAL_HOOK
-    export LOCAL_HOOK_IS_CALLED=1
 fi
 
 if cat "${IGNORE_GLOBAL_HOOKS}" | grep -q "${GIT_ROOT}"; then

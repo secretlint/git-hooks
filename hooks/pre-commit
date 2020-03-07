@@ -5,7 +5,7 @@ declare scriptDir=$(cd $(dirname $0);pwd)
 declare parentDir="$(dirname "${scriptDir}")"
 declare FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
 [ -z "$FILES" ] && exit 0
-echo -n "  ▶ Check credentials by secretlint"
+echo "  ▶ Check credentials by secretlint"
 # Secretlint all selected files
 echo "$FILES" | xargs docker run -v `pwd`:`pwd` -w `pwd` --rm secretlint/secretlint secretlint
 RET=$?
