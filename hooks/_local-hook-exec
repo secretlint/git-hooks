@@ -9,6 +9,9 @@ if [ -e $LOCAL_HOOK ]; then
     $LOCAL_HOOK
 fi
 
-if cat "${IGNORE_GLOBAL_HOOKS}" | grep -q "${GIT_ROOT}"; then
-    exit 0
+if [ -f "${IGNORE_GLOBAL_HOOKS}" ]
+then
+    if cat "${IGNORE_GLOBAL_HOOKS}" | grep -q "${GIT_ROOT}"; then
+        exit 0
+    fi
 fi
