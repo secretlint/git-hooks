@@ -1,13 +1,13 @@
 #!/bin/bash
 
 source `dirname ${0}`/_local-hook-exec
-declare FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
+declare FILES=$(git diff --cached --name-only --diff-filter=ACMR)
 [ -z "$FILES" ] && exit 0
 echo "  ▶ Check credentials by secretlint"
 declare TEMPDIR=$(mktemp -d)
 trap 'rm -rf -- "$TEMPDIR"' EXIT
 # Secretlint all staged files
-echo "$FILES" | while read -r filePath
+echo "$FILES" | while IFS= read -r filePath
 do
     declare fileDir="$TEMPDIR"/$(dirname "$filePath")
     if [ ! -d "$fileDir" ]
